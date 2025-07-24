@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feliz Aniversário, Milena!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  body {
+    margin: 0;
+    background: #1e2a47;
+    font-family: 'Poppins', sans-serif;
+    color: #fce77d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url('https://uploads5.wikiart.org/images/vincent-van-gogh/starry-night.jpg!Large.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30, 42, 71, 0.7);
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    background: rgba(30, 42, 71, 0.85);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 20px #fce77dcc;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5em;
+    text-shadow: 0 0 10px #fce77d, 0 0 20px #fce77dcc;
+    animation: pulse 3s infinite ease-in-out;
+  }
+
+  p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: #fce77ddd;
+    text-shadow: 0 0 6px #0008;
+    margin-bottom: 1.5em;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #fff7a1;
+    display: block;
+    margin: 1.2em 0 0.5em 0;
+    text-shadow: 0 0 10px #fce77d;
+  }
+
+  .cake {
+    font-size: 6rem;
+    margin: 20px 0 30px 0;
+    animation: bounce 1.8s infinite alternate;
+    filter: drop-shadow(0 0 10px #fce77d);
+  }
+
+  button {
+    background-color: #fce77dcc;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    color: #1e2a47;
+    cursor: pointer;
+    box-shadow: 0 0 18px #fce77dcc;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 20px;
+    font-weight: 700;
+  }
+
+  button:hover {
+    background-color: #fff;
+    color: #1e2a47;
+  }
+
+  #secretMessage {
+    margin-top: 25px;
+    font-size: 1.4rem;
+    color: #fff9;
+    font-style: italic;
+    text-shadow: 0 0 8px #0009;
+    display: none;
+    line-height: 1.6;
+  }
+
+  .confetti {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background-color: #fce77d;
+    opacity: 0.9;
+    animation-name: confettiFall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    box-shadow: 0 0 6px #fce77dcc;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); text-shadow: 0 0 15px #fce77d, 0 0 30px #fce77dcc; }
+    50% { transform: scale(1.1); text-shadow: 0 0 25px #fff, 0 0 50px #fce77dff; }
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-22px); }
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="content">
+  <h1>Feliz Aniversário, Milena!</h1>
+  <div class="cake" aria-label="Bolo de aniversário">🎂</div>
+  <p>
+    Que seu dia brilhe com a intensidade dos sonhos mais audazes,<br />
+    onde cada instante é uma explosão de vida e esperança,<br />
+    e seu coração dance no ritmo infinito da felicidade.<br /><br />
+    Celebre hoje, celebre sempre — pois a vida é o poema que você escreve.<br /><br />
+    <strong>“Quem tem muitos amigos pode chegar à ruína, mas existe amigo mais fiel que um irmão.”</strong><br />
+    Provérbios 18:24
+  </p>
+
+  <button id="revealBtn" aria-expanded="false">Clique para uma mensagem especial</button>
+
+  <div id="secretMessage" role="region" aria-live="polite">
+    <p>
+      No jardim dos dias, floresce a amizade verdadeira,<br />
+      que atravessa tempestades, ilumina a alma inteira.<br />
+      Milena, tua essência é luz, estrela que nunca se apaga —<br />
+      que neste aniversário, o amor te abrace e te embale em sua magia.
+    </p>
+    <p style="margin-top:2em; font-style:normal; font-weight:bold; font-size:1.2rem; color:#fff7a1;">
+      “Eu sonho minha pintura e depois pinto meu sonho.”<br />
+      Vincent van Gogh
+    </p>
+  </div>
+</div>
+
+<audio id="backgroundMusic" src="https://cdn.pixabay.com/download/audio/2022/03/29/audio_cda3e9c7ca.mp3?filename=happy-acoustic-10772.mp3" autoplay loop></audio>
+
+<script>
+
+  const confettiCount = 80;
+  for(let i = 0; i < confettiCount; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    confetti.style.animationDelay = (Math.random() * 5) + 's';
+    const hue = 50 + Math.random() * 30; // tons amarelos
+    confetti.style.backgroundColor = `hsl(${hue}, 90%, 70%)`;
+    confetti.style.width = confetti.style.height = (Math.random() * 8 + 5) + 'px';
+    document.body.appendChild(confetti);
+  }
+
+  const button = document.getElementById('revealBtn');
+  const secretMessage = document.getElementById('secretMessage');
+
+  button.addEventListener('click', () => {
+    const isHidden = secretMessage.style.display === 'none' || secretMessage.style.display === '';
+    secretMessage.style.display = isHidden ? 'block' : 'none';
+    button.textContent = isHidden ? 'Ocultar mensagem especial' : 'Clique para uma mensagem especial';
+    button.setAttribute('aria-expanded', isHidden);
+  });
+</script>
+
+</body>
+</html>
